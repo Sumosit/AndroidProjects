@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="prosciutto">Prosciutto</string>
+    <string name="beef_patty">Beef Patty</string>
+    <string name="ostrich_patty">Ostrich Patty</string>
+    <string name="lamb_patty">Lamb Patty</string>
+    <string name="asiago_cheese">Asiago Cheese</string>
+    <string name="creme_fraiche">Creme Fraiche</string>
+    <string name="caviar_sauce_up_to_one_teaspoon">Caviar sauce up to one teaspoon</string>
+    <string name="todo">TODO</string>
 </resources>

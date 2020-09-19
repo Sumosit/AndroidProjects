@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView calories;
     SeekBar seekBar_sauceValue;
+    ImageView burger;
     int a = 0, b = 0, c = 0, d = 0;
     // Calories = a + b + c + d
 
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         calories = (TextView) findViewById(R.id.textView_Calories);
         seekBar_sauceValue = (SeekBar) findViewById(R.id.seekBar_sauceValue);
+        burger = (ImageView) findViewById(R.id.imageView_burgerProgress);
 
         seekBar_sauceValue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @SuppressLint("SetTextI18n")
@@ -31,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 d =  seekBar.getProgress();
                 calories.setText("Calories: " + String.valueOf(a + b + c + d));
+                burger.setAlpha((float)d / 100);
+
             }
 
             @Override
@@ -87,5 +92,4 @@ public class MainActivity extends AppCompatActivity {
         }
         calories.setText("Calories: " + String.valueOf(a + b + c + d));
     }
-
 }
