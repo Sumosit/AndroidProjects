@@ -12,18 +12,16 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    CheckBox beef, ostrich, lamb, proscuitto, asiago, creme;
     TextView calories;
     SeekBar seekBar_sauceValue;
-    int a = 0, b = 0, c = 0, total = 0;
-
+    int a = 0, b = 0, c = 0, d = 0;
+    // Calories = a + b + c + d
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        proscuitto = (CheckBox) findViewById(R.id.checkBox_Prosciutto);
         calories = (TextView) findViewById(R.id.textView_Calories);
         seekBar_sauceValue = (SeekBar) findViewById(R.id.seekBar_sauceValue);
 
@@ -31,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                calories.setText("Calories: " + String.valueOf(a + b + c + seekBar.getProgress()));
+                d =  seekBar.getProgress();
+                calories.setText("Calories: " + String.valueOf(a + b + c + d));
             }
 
             @Override
@@ -48,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     public void onCheckBoxClicked(View view) {
         boolean checked = ((CheckBox) view).isChecked();
+
         switch (view.getId()) {
             case R.id.checkBox_Prosciutto:
                 if (checked) {
@@ -56,8 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     b = 0;
                 }
         }
-        System.out.println(a + b + c);
-        calories.setText("Calories: " + String.valueOf(a + b + c));
+        calories.setText("Calories: " + String.valueOf(a + b + c + d));
     }
 
     @SuppressLint("SetTextI18n")
@@ -86,8 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     c = 60;
                 break;
         }
-        System.out.println(a + b + c);
-        calories.setText("Calories: " + String.valueOf(a + b + c));
+        calories.setText("Calories: " + String.valueOf(a + b + c + d));
     }
 
 }
