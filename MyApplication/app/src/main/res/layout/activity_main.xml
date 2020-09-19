@@ -147,6 +147,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:srcCompat="@drawable/baconburger" />
+        app:srcCompat="@drawable/baconburger_dark"
+        />
+
+    <ImageView
+        android:id="@+id/imageView_burgerProgressDark"
+        android:layout_width="0dp"
+        android:layout_height="139dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginEnd="59dp"
+        android:contentDescription="@string/todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/baconburger"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
