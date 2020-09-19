@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/whitetriangle369b8d2d"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Caviar sauce up to one teaspoon"
+        app:layout_constraintEnd_toEndOf="@+id/seekBar_sauceValue"
+        app:layout_constraintStart_toStartOf="@+id/seekBar_sauceValue"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup3" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="410dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/dadskitchen" />
+
+    <CheckBox
+        android:id="@+id/checkBox_Prosciutto"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="onCheckBoxClicked"
+        android:text="Prosciutto"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+
+    <SeekBar
+        android:id="@+id/seekBar_sauceValue"
+        android:layout_width="319dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="48dp"
+        android:max="100"
+        android:progress="50"
+
+        android:thumbTint="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView_Calories"
+        android:layout_width="112dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_sauceValue" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="158dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/radioButton_Beef"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:onClick="OnRadioButtonClick"
+            android:text="Beef Patty"
+            android:textSize="16sp"
+            tools:layout_editor_absoluteX="28dp" />
+
+        <RadioButton
+            android:id="@+id/radioButton_Ostrich"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:onClick="OnRadioButtonClick"
+            android:text="Ostrich Patty"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/radioButton_Lamb"
+            tools:layout_editor_absoluteX="28dp" />
+
+        <RadioButton
+            android:id="@+id/radioButton_Lamb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="OnRadioButtonClick"
+            android:text="Lamb Patty"
+            android:textSize="16sp" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="158dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/seekBar_sauceValue"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_Prosciutto">
+
+        <RadioButton
+            android:id="@+id/radioButton_Asiago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="OnRadioButtonClick"
+            android:text="Asiago Cheese"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton_Creme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="OnRadioButtonClick"
+            android:text="Creme Fraiche"
+            android:textSize="16sp" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
