@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
                 d =  seekBar.getProgress();
                 calories.setText("Calories: " + String.valueOf(a + b + c + d));
                 burger.setAlpha((float)d / 100);
-
             }
 
             @Override
