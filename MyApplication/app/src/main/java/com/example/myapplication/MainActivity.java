@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         calories = (TextView) findViewById(R.id.textView_Calories);
         seekBar_sauceValue = (SeekBar) findViewById(R.id.seekBar_sauceValue);
+        seekBar_sauceValue.setProgress(0);
         burger = (ImageView) findViewById(R.id.imageView_burgerProgressDark);
         burger.setAlpha((float)0);
 
