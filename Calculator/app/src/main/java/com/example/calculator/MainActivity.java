@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressLint("SetTextI18n")
 public class MainActivity extends AppCompatActivity {
 
     String number = "", operator = "";
@@ -31,24 +32,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        total = (EditText) findViewById(R.id.editText_total);
-        button_0 = (Button) findViewById(R.id.button_0);
-        button_1 = (Button) findViewById(R.id.button_1);
-        button_2 = (Button) findViewById(R.id.button_2);
-        button_3 = (Button) findViewById(R.id.button_3);
-        button_4 = (Button) findViewById(R.id.button_4);
-        button_5 = (Button) findViewById(R.id.button_5);
-        button_6 = (Button) findViewById(R.id.button_6);
-        button_7 = (Button) findViewById(R.id.button_7);
-        button_8 = (Button) findViewById(R.id.button_8);
-        button_9 = (Button) findViewById(R.id.button_9);
-        button_percent = (Button) findViewById(R.id.button_percent);
-        button_divide = (Button) findViewById(R.id.button_divide);
-        button_multiple = (Button) findViewById(R.id.button_multiple);
-        button_minus = (Button) findViewById(R.id.button_minus);
-        button_plus = (Button) findViewById(R.id.button_plus);
-        button_getTotal = (Button) findViewById(R.id.button_getTotal);
-        button_ac = (Button) findViewById(R.id.button_ac);
+        total = findViewById(R.id.editText_total);
+        button_0 = findViewById(R.id.button_0);
+        button_1 = findViewById(R.id.button_1);
+        button_2 = findViewById(R.id.button_2);
+        button_3 = findViewById(R.id.button_3);
+        button_4 = findViewById(R.id.button_4);
+        button_5 = findViewById(R.id.button_5);
+        button_6 = findViewById(R.id.button_6);
+        button_7 = findViewById(R.id.button_7);
+        button_8 = findViewById(R.id.button_8);
+        button_9 = findViewById(R.id.button_9);
+        button_percent = findViewById(R.id.button_percent);
+        button_divide = findViewById(R.id.button_divide);
+        button_multiple = findViewById(R.id.button_multiple);
+        button_minus = findViewById(R.id.button_minus);
+        button_plus = findViewById(R.id.button_plus);
+        button_getTotal = findViewById(R.id.button_getTotal);
+        button_ac = findViewById(R.id.button_ac);
 
         button_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,7 +182,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         button_getTotal.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 ArrayList<Integer> nums = new ArrayList<>();

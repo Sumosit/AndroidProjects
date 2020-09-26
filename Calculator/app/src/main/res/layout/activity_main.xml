@@ -181,7 +181,6 @@
         android:id="@+id/editText_total"
         android:layout_width="409dp"
         android:layout_height="98dp"
-        android:gravity="right"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
