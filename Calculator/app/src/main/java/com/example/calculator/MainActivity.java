@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -140,89 +141,41 @@ public class MainActivity extends AppCompatActivity {
         button_minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    operator = "minus";
-                    number1 = Integer.parseInt(number);
-                    number = "";
-                    total.setText(total.getText() + " - ");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    operator = "minus";
-                    total.setText(String.valueOf(number1) + " - ");
-                }
+                total.setText(total.getText() + " - ");
             }
         });
 
         button_plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    operator = "plus";
-                    number1 = Integer.parseInt(number);
-                    number = "";
-                    total.setText(total.getText() + " + ");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    operator = "plus";
-                    total.setText(String.valueOf(number1) + " + ");
-                }
+                total.setText(total.getText() + " + ");
             }
         });
 
         button_divide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    operator = "divide";
-                    number1 = Integer.parseInt(number);
-                    number = "";
-                    total.setText(total.getText() + " / ");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    operator = "divide";
-                    total.setText(String.valueOf(number1) + " / ");
-                }
+                total.setText(total.getText() + " / ");
             }
         });
 
         button_multiple.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    operator = "multiple";
-                    number1 = Integer.parseInt(number);
-                    number = "";
-                    total.setText(total.getText() + " * ");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    operator = "multiple";
-                    total.setText(String.valueOf(number1) + " * ");
-                }
+                total.setText(total.getText() + " * ");
             }
         });
 
         button_percent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    operator = "percent";
-                    number1 = Integer.parseInt(number);
-                    number = "";
-                    total.setText(total.getText() + " % ");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    operator = "percent";
-                    total.setText(String.valueOf(number1) + " % ");
-                }
+                total.setText(total.getText() + " % ");
             }
         });
 
         button_ac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                number1 = 0;
-                number2 = 0;
-                number = "";
                 total.setText("");
             }
         });
@@ -231,43 +184,34 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                try {
-                    number2 = Integer.parseInt(number);
-                    number = "";
-                    if (operator.equals("minus")) {
-                        total.setText(String.valueOf(number1) + " - " + String.valueOf(number2) + " = " + (number1 - number2) + "\n");
-                    } else if (operator.equals("plus")) {
-                        total.setText(String.valueOf(number1) + " + " + String.valueOf(number2) + " = " + (number1 + number2) + "\n");
-                    } else if (operator.equals("divide")) {
-                        total.setText(String.valueOf(number1) + " / " + String.valueOf(number2) + " = " + (number1 / number2) + "\n");
-                    } else if (operator.equals("multiple")) {
-                        total.setText(String.valueOf(number1) + " * " + String.valueOf(number2) + " = " + (number1 * number2) + "\n");
-                    } else if (operator.equals("percent")) {
-                        total.setText(String.valueOf(number1) + " % " + String.valueOf(number2) + " = " + (number1 % number2) + "\n");
-                    }
-                } catch (Exception e) {
-                    ArrayList<Integer> nums = new ArrayList<>();
-                    String operations;
-                    int sum;
-                    Pattern p = Pattern.compile("\\d+");
-                    Matcher m = p.matcher(total.getText().toString());
-                    while(m.find()) {
-                        nums.add(Integer.valueOf(m.group()));
-                    }
-                    operations = total.getText().toString().replaceAll("\\d", "").replaceAll(" ", "");
-                    sum = nums.get(0);
-                    for (int i = 1; i < nums.size(); i++) {
-                        if (operations.charAt(i - 1) == '+') {
-                            sum = sum + nums.get(i);
-                        }
-                        else if (operations.charAt(i - 1) == '-') {
-                            sum = sum - nums.get(i);
-                        }
-
-                    }
-
-                    System.out.println(e.getMessage());
+                ArrayList<Integer> nums = new ArrayList<>();
+                String operations;
+                int sum;
+                Pattern p = Pattern.compile("\\d+");
+                Matcher m = p.matcher(total.getText().toString());
+                while (m.find()) {
+                    nums.add(Integer.valueOf(m.group()));
                 }
+                operations = total.getText().toString().replaceAll("\\d", "").replaceAll(" ", "");
+                if (operations.length() > nums.size()) {
+                    total.setText("Wrong equation");
+                    return;
+                }
+                sum = nums.get(0);
+                for (int i = 1; i < nums.size(); i++) {
+                    if (operations.charAt(i - 1) == '+') {
+                        sum = sum + nums.get(i);
+                    } else if (operations.charAt(i - 1) == '-') {
+                        sum = sum - nums.get(i);
+                    } else if (operations.charAt(i - 1) == '*') {
+                        sum = sum * nums.get(i);
+                    } else if (operations.charAt(i - 1) == '/') {
+                        sum = sum / nums.get(i);
+                    } else if (operations.charAt(i - 1) == '%') {
+                        sum = sum % nums.get(i);
+                    }
+                }
+                total.setText(total.getText().toString() + "= " + sum);
             }
         });
     }
