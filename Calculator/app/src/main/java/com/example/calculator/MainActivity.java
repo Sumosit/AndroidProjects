@@ -1,0 +1,274 @@
+package com.example.calculator;
+
+import androidx.annotation.ArrayRes;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+
+    String number = "", operator = "";
+    int number1, number2;
+    int[] numbers = new int[10];
+
+    EditText total;
+    Button button_0, button_1, button_2, button_3, button_4, button_5,
+            button_6, button_7, button_8, button_9, button_percent, button_divide,
+            button_multiple, button_minus, button_plus, button_getTotal, button_ac;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        total = (EditText) findViewById(R.id.editText_total);
+        button_0 = (Button) findViewById(R.id.button_0);
+        button_1 = (Button) findViewById(R.id.button_1);
+        button_2 = (Button) findViewById(R.id.button_2);
+        button_3 = (Button) findViewById(R.id.button_3);
+        button_4 = (Button) findViewById(R.id.button_4);
+        button_5 = (Button) findViewById(R.id.button_5);
+        button_6 = (Button) findViewById(R.id.button_6);
+        button_7 = (Button) findViewById(R.id.button_7);
+        button_8 = (Button) findViewById(R.id.button_8);
+        button_9 = (Button) findViewById(R.id.button_9);
+        button_percent = (Button) findViewById(R.id.button_percent);
+        button_divide = (Button) findViewById(R.id.button_divide);
+        button_multiple = (Button) findViewById(R.id.button_multiple);
+        button_minus = (Button) findViewById(R.id.button_minus);
+        button_plus = (Button) findViewById(R.id.button_plus);
+        button_getTotal = (Button) findViewById(R.id.button_getTotal);
+        button_ac = (Button) findViewById(R.id.button_ac);
+
+        button_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number = number + 1;
+                total.setText(total.getText() + "1");
+            }
+        });
+
+        button_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number = number + 2;
+                total.setText(total.getText() + "2");
+            }
+        });
+
+        button_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number = number + 3;
+                total.setText(total.getText() + "3");
+            }
+        });
+
+        button_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number = number + 4;
+                total.setText(total.getText() + "4");
+            }
+        });
+
+        button_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number = number + 5;
+                total.setText(total.getText() + "5");
+            }
+        });
+
+        button_6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number = number + 6;
+                total.setText(total.getText() + "6");
+            }
+        });
+
+        button_7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number = number + 7;
+                total.setText(total.getText() + "7");
+            }
+        });
+
+        button_8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number = number + 8;
+                total.setText(total.getText() + "8");
+            }
+        });
+
+        button_9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number = number + 9;
+                total.setText(total.getText() + "9");
+            }
+        });
+
+        button_0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number = number + 0;
+                total.setText(total.getText() + "0");
+            }
+        });
+
+        button_0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number = number + 0;
+                total.setText(total.getText() + "0");
+            }
+        });
+
+        button_minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    operator = "minus";
+                    number1 = Integer.parseInt(number);
+                    number = "";
+                    total.setText(total.getText() + " - ");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    operator = "minus";
+                    total.setText(String.valueOf(number1) + " - ");
+                }
+            }
+        });
+
+        button_plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    operator = "plus";
+                    number1 = Integer.parseInt(number);
+                    number = "";
+                    total.setText(total.getText() + " + ");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    operator = "plus";
+                    total.setText(String.valueOf(number1) + " + ");
+                }
+            }
+        });
+
+        button_divide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    operator = "divide";
+                    number1 = Integer.parseInt(number);
+                    number = "";
+                    total.setText(total.getText() + " / ");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    operator = "divide";
+                    total.setText(String.valueOf(number1) + " / ");
+                }
+            }
+        });
+
+        button_multiple.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    operator = "multiple";
+                    number1 = Integer.parseInt(number);
+                    number = "";
+                    total.setText(total.getText() + " * ");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    operator = "multiple";
+                    total.setText(String.valueOf(number1) + " * ");
+                }
+            }
+        });
+
+        button_percent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    operator = "percent";
+                    number1 = Integer.parseInt(number);
+                    number = "";
+                    total.setText(total.getText() + " % ");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    operator = "percent";
+                    total.setText(String.valueOf(number1) + " % ");
+                }
+            }
+        });
+
+        button_ac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                number1 = 0;
+                number2 = 0;
+                number = "";
+                total.setText("");
+            }
+        });
+
+        button_getTotal.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                try {
+                    number2 = Integer.parseInt(number);
+                    number = "";
+                    if (operator.equals("minus")) {
+                        total.setText(String.valueOf(number1) + " - " + String.valueOf(number2) + " = " + (number1 - number2) + "\n");
+                    } else if (operator.equals("plus")) {
+                        total.setText(String.valueOf(number1) + " + " + String.valueOf(number2) + " = " + (number1 + number2) + "\n");
+                    } else if (operator.equals("divide")) {
+                        total.setText(String.valueOf(number1) + " / " + String.valueOf(number2) + " = " + (number1 / number2) + "\n");
+                    } else if (operator.equals("multiple")) {
+                        total.setText(String.valueOf(number1) + " * " + String.valueOf(number2) + " = " + (number1 * number2) + "\n");
+                    } else if (operator.equals("percent")) {
+                        total.setText(String.valueOf(number1) + " % " + String.valueOf(number2) + " = " + (number1 % number2) + "\n");
+                    }
+                } catch (Exception e) {
+                    ArrayList<Integer> nums = new ArrayList<>();
+                    String operations;
+                    int sum;
+                    Pattern p = Pattern.compile("\\d+");
+                    Matcher m = p.matcher(total.getText().toString());
+                    while(m.find()) {
+                        nums.add(Integer.valueOf(m.group()));
+                    }
+                    operations = total.getText().toString().replaceAll("\\d", "").replaceAll(" ", "");
+                    sum = nums.get(0);
+                    for (int i = 1; i < nums.size(); i++) {
+                        if (operations.charAt(i - 1) == '+') {
+                            sum = sum + nums.get(i);
+                        }
+                        else if (operations.charAt(i - 1) == '-') {
+                            sum = sum - nums.get(i);
+                        }
+
+                    }
+
+                    System.out.println(e.getMessage());
+                }
+            }
+        });
+    }
+}
